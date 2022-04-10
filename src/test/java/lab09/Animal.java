@@ -12,6 +12,9 @@ public class Animal {
     private int speed;
     private boolean flyable;
 
+    public int getSpeed() {
+        return speed;
+    }
 
     public Animal(AnimalBuilder animalBuilder) {
         this.name = animalBuilder.name;
@@ -28,6 +31,7 @@ public class Animal {
         for (Animal animal : animals) {
             System.out.println(animal.toString());
         }
+        System.out.println("The winner is " + getWinner(animals));
     }
 
     @Override
@@ -37,6 +41,25 @@ public class Animal {
                 ", speed=" + speed +
                 ", flyable=" + flyable +
                 '}';
+    }
+
+    private static Animal getWinner(List<Animal> animalList) {
+        if(animalList.isEmpty()) {
+            throw new IllegalArgumentException("Animal list is empty.");
+        }
+
+        if(animalList.size()==1) {
+            return animalList.get(0);
+        }
+
+        Animal winner = animalList.get(0);
+        for (Animal animal : animalList) {
+            if(animal.getSpeed()> winner.getSpeed()){
+                winner = animal;
+            }
+        }
+        return winner;
+
     }
 
     public int randomSpeedValue(int speed) {
