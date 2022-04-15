@@ -1,4 +1,4 @@
-package lab14;
+package lab14.test;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
